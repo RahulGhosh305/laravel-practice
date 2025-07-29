@@ -8,15 +8,15 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
+// Route::get('/about', function () {
+//     return view('about');
+// });
 
 Route::get('/details/{name}', function ($name) {
-    return view('details', ['name' => $name]);
+    return view('details', ['name' => $name]); // Dynamic Data Pass
 });
 
-route::redirect('/home2', '/welcome');
+Route::redirect('/home2', '/welcome');
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -27,6 +27,8 @@ Route::get('/userDetails', [UserController::class, 'getDetails']);
 Route::get('/userDetails/{name}', [UserController::class, 'getFullDetails']);
 Route::get('/admin', [UserController::class, 'adminLogin']);
 
+Route::get('/test', [UserController::class, 'userHome'] );
 
 
-// Route::view('/about', 'about');
+
+// Route::view('/about', 'about', ['company' => 'BRAC IT Services']); // Static Data pass
