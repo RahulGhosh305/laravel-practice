@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controller\AdminController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('home');
@@ -28,6 +28,9 @@ Route::get('/userDetails/{name}', [UserController::class, 'getFullDetails']);
 Route::get('/admin', [UserController::class, 'adminLogin']);
 
 Route::get('/test', [UserController::class, 'userHome'] );
+
+Route::view('/user-form', 'userForm');
+Route::post('/add-user', [UserController::class, 'addUser']);
 
 
 

@@ -36,4 +36,15 @@ class UserController extends Controller
         $users = ["R", "G", "J"];
         return view('test', ['mainUser' => $mainUser, 'users' => $users]);
     } 
+
+    function addUser (Request $req) {
+        $req->validate([
+            'username'=>'required | min:3 | max:10',
+            'password'=>'required',
+            'email'=>'required | email',
+            'gender'=>'required',
+            'city'=>'required',
+        ]);
+        return $req;
+    }
 }
