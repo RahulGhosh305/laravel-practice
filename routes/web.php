@@ -3,15 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('home');
 });
-
-Route::get('/url-generation', function () {
-    return view('url-generation');
-});
-
 
 // Route::get('/about', function () {
 //     return view('about');
@@ -40,3 +36,15 @@ Route::post('/add-user', [UserController::class, 'addUser']);
 
 
 // Route::view('/about', 'about', ['company' => 'BRAC IT Services']); // Static Data pass
+
+Route::get('/url-generation', function () {
+    return view('url-generation');
+});
+
+Route::get('/route-named', function () {
+    return view('route-named');
+});
+
+// Named Route
+Route::view('/about/profile/user/details', 'userprofiledetails')->name('userProfile');
+Route::get('/show', [HomeController::class ,'getHome']);
