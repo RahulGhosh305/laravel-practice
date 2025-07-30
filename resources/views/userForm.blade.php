@@ -12,17 +12,17 @@
     <form action="add-user" method="post">
         @csrf
         <div class="input-wrapper">
-            <input type="text" name="username" placeholder="Enter User Name" id="">
+            <input type="text" name="username" value="{{old('username')}}" placeholder="Enter User Name" id="" class="{{($errors->first('username')?'input-error':'')}}">
             <span style="color: red">@error('username') {{$message}} @enderror</span>
         </div>
         <br>
         <div class="input-wrapper">
-            <input type="password" name="password" placeholder="Enter Password Name" id="">
+            <input type="password" name="password" value="{{old('password')}}" placeholder="Enter Password Name" id="">
              <span style="color: red">@error('password') {{$message}} @enderror</span>
         </div>
         <br>
         <div class="input-wrapper">
-            <input type="email" name="email" placeholder="Enter Email Name" id="">
+            <input type="email" name="email" value="{{old('email')}}" placeholder="Enter Email Name" id="">
                <span style="color: red">@error('email') {{$message}} @enderror</span>
         </div>
         <br>
@@ -61,3 +61,10 @@
     </form>
     <!-- If you do not have a consistent goal in life, you can not live it in a consistent way. - Marcus Aurelius -->
 </div>
+
+<style>
+    .input-error {
+        border: 1px solid red;
+        color: red;
+    }
+</style>

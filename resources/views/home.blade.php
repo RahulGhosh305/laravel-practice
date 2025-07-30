@@ -7,7 +7,14 @@
 
 <h1>Welcome Laravel</h1>
 <a href="/about">About Page</a>
+
 <a href="/details/123">Details Page</a>
+<a href="{{URL::to('/details',['1234'])}}">Details Page</a>
+
+<a href="/url-generation">URL Generation</a>
+
+
+
 
 <style>
     .success {
