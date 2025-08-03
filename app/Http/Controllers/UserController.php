@@ -37,12 +37,27 @@ class UserController extends Controller
         return view('test', ['mainUser' => $mainUser, 'users' => $users]);
     } 
 
+    /**
+     * Handles the addition of a new user by validating the incoming request data.
+     *
+     * Validation rules:
+     * - username: required, minimum 3 characters, maximum 10 characters, must be uppercase
+     * - password: required
+     * - email: required, must be a valid email address
+     * - gender: required
+     * - city: required
+     *
+     * Custom error messages are provided for username and email validation failures.
+     *
+     * @param  \Illuminate\Http\Request  $req  The incoming HTTP request containing user data.
+     * @return \Illuminate\Http\Request       The validated request data.
+     */
     function addUser (Request $req) {
         $req->validate([
             // default message write here
-            'username'=>'required | min:3 | max:10 | uppercase',
+            'username'=>'required|min:3|max:10|uppercase|regex:/^[A-Z]+$/',
             'password'=>'required',
-            'email'=>'required | email',
+            'email'=>'required|email',
             'gender'=>'required',
             'city'=>'required',
         ],[

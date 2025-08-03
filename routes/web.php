@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', function () {
     return view('home');
@@ -48,3 +49,16 @@ Route::get('/route-named', function () {
 // Named Route
 Route::view('/about/profile/user/details', 'userprofiledetails')->name('userProfile');
 Route::get('/show', [HomeController::class ,'getHome']);
+
+// Route Group With Prefix
+Route::prefix('student')->group(function () {
+    Route::get('/home', function() {
+        return view('studentHome');
+    });
+    Route::get('/list', [StudentController::class, 'showStudentList']);
+    Route::get('/add', [StudentController::class, 'addStudent']);
+
+});
+
+
+// Route Group With Controller
