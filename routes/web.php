@@ -57,8 +57,15 @@ Route::prefix('student')->group(function () {
     });
     Route::get('/list', [StudentController::class, 'showStudentList']);
     Route::get('/add', [StudentController::class, 'addStudent']);
-
+    Route::get('/edit', [StudentController::class, 'editStudent']);
+    Route::get('/delete', [StudentController::class, 'deleteStudent']);
 });
 
 
 // Route Group With Controller
+Route::controller(StudentController::class)->group(function () {
+    Route::get('/student/list', 'showStudentList');
+    Route::get('/student/add', 'addStudent');
+    Route::get('/student/edit', 'editStudent');
+    Route::get('/student/delete/{id}', 'deleteStudent');
+});

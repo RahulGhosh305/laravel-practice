@@ -14,4 +14,12 @@ class StudentController extends Controller
     function addStudent () {
         return "Add Student";
     }
+
+    function editStudent () {
+        return "Edit Student";
+    }
+
+    function deleteStudent ($id) {
+        return "Delete Student ". $id;
+    }
 }
